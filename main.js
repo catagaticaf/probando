@@ -89,30 +89,3 @@ const armarCarrito = objeto =>{
 // A PARTIR DE ACA NO ME FUNCIONA, NO PUEDO HACER QUE LOS PRODUCTOS APAREZCAN EN EL CARRITO EN HTML
 
 
-const pintarCarrito = () => {
-  console.log(carrito2)
-  items.innerHTML = '';
-  Object.values(carrito2).forEach(producto => {
-    templateCarrito.querySelector('th').textContent = producto.id;
-    templateCarrito.querySelectorAll('td')[0].textContent = producto.nombre;
-    templateCarrito.querySelectorAll('td')[1].textContent = producto.cantidad;
-    templateCarrito.querySelector('.btn-info').dataset.id = producto.id;
-    templateCarrito.querySelector('.btn-danger').dataset.id = producto.id;
-    templateCarrito.querySelector('span').textContent = producto.cantidad * producto.precio;
-
-    const clone = templateCarrito.cloneNode(true)
-    templateCarrito.appendChild(clone)
-  })
-  items.appendChild(fragment)
-  pintarFooter ()
-}
-
-const pintarFooter = () => {
-  footerCarrito.innerHTML = ''
-  if (Object.keys(carrito2).length === 0){
-    footerCarrito.innerHTML = `
-    <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
-    `
-  }
-  const nCantidad = carrito.reduce((ac, el)=> ac += el.cantidad ,0)
-}
