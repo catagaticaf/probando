@@ -54,6 +54,9 @@ const pintarCards = data =>{
 function agregarAlCarrito(e, producto){
   console.log(producto)
   console.log(e.target.id)
+
+  const productoSeleccionado = producto.find (el => el.id === parseInt(e.target.id))
+  console.log(productoSeleccionado)
 }
 
 
