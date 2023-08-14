@@ -11,17 +11,14 @@ const fetchData = async()=>{
   }
 }
 
-
-//
-
-const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-
 //asi nos aseguramnos que el archivo html cargue antes que el fetchData
 document.addEventListener('DOMContentLoaded',()=>{
   fetchData()
 })
 
+//
+
+const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 
 
@@ -80,9 +77,9 @@ const armarCarrito = objeto =>{
 
   const existe = carrito.some ( p => p.id === objeto.id)
   if (carrito.hasOwnProperty(producto.id)){
-    producto.cantidad = carrito2[producto.id].cantidad + 1
+    producto.cantidad = carrito[producto.id].cantidad + 1
   }
-  carrito2[producto.id] = {...producto}
+  carrito[producto.id] = {...producto}
   pintarCarrito()
 } 
 
