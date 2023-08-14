@@ -35,7 +35,7 @@ const pintarCards = data =>{
             <div class="card-body">
               <h5 class="card-title">${producto.nombre}</h5>
               <p class="card-text">$${producto.precio}</p>
-              <button id="btn-compra" class="btn btn-light botones" data-id="${producto.id}">Agregar al carrito</button>
+              <button id="btn-compra" class="btn-compra btn btn-light botones" data-id="${producto.id}">Agregar al carrito</button>
             </div>
           </div>
         </div>
@@ -47,45 +47,52 @@ const pintarCards = data =>{
   });
     const btnAdd = document.querySelectorAll('.btn-compra')
     btnAdd.forEach(btn => {
-      btn.addEventListener('click', (e)=> agregarAlCarrito(e, data))
+      btn.addEventListener('click', (e)=> addCarrito(e, data))
     })
 }
 
-function agregarAlCarrito(e, producto){
+function agregarAlCarrito(e, arrayProductos){
   console.log(producto)
-  console.log(e.target.id)
+  console.log(e.target.dataset.id)
 
-  const productoSeleccionado = producto.find (el => el.id === parseInt(e.target.id))
+  const productoSeleccionado = arrayProductos.find (el => el.id === parseInt(e.target.dataset.id))
   console.log(productoSeleccionado)
+  carrito.push(productoSeleccionado)
+
+  const producto =
+  {
+    id: productoSeleccionado.id,
+    nombre: productoSeleccionado.nombre,
+    precio: productoSeleccionado.precio,
+    cantidad: 1,
+  }
 }
 
 
-/*
-const addCarrito = e => {
-  console.log(`Se agrego al carrito! El id del producto seleccionado es ${e.target.id}`);
+const addCarrito = (e, data) => {
+  if (e.target.classList.contains('botones'))
+  armarCarrito(e.target.dataset.id, data)
+ /* console.log(`Se agrego al carrito! El id del producto seleccionado es ${e.target.id}`);
   //console.log(e.target.classList.contains('botones'))
   if (e.target.classList.contains('botones')){
     armarCarrito(e.target.dataset.id)
-  }
-}*/
+  }*/
+}
 
-const armarCarrito = objeto =>{
-  const producto = {
-    id: objeto.querySelector('.botones').dataset.id,
-    nombre: objeto.querySelector('.card-title').textContent,
-    precio: objeto.querySelector('.card-text').textContent,
-    cantidad: 1,
+const armarCarrito = (id, array) =>{
+  const productoSeleccionado = array.find()
+      
 
-  }
-
-  const existe = carrito.some ( p => p.id === objeto.id)
-  if (carrito.hasOwnProperty(producto.id)){
+  const existe = carrito.some ( p => p.id ===  parseInt(e.target.dataset.id))
+  if (existe){
+    const indice = carrito.findIndex ( p => p.id === parseInt(e.target.dataset.id))
+    carrito[indice].cantidad++;
     producto.cantidad = carrito[producto.id].cantidad + 1
+  } else {
+    carrito.push(producto)
   }
-  carrito[producto.id] = {...producto}
-  pintarCarrito()
+  console.log(carrito)
 } 
 
-// A PARTIR DE ACA NO ME FUNCIONA, NO PUEDO HACER QUE LOS PRODUCTOS APAREZCAN EN EL CARRITO EN HTML
 
 
