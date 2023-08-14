@@ -20,8 +20,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-
-
 //Armando las cards de los productos con fetch
 const pintarCards = data =>{
   let container = document.getElementById("contenedor-cards");
@@ -47,12 +45,12 @@ const pintarCards = data =>{
   });
     const btnAdd = document.querySelectorAll('.btn-compra')
     btnAdd.forEach(btn => {
-      btn.addEventListener('click', (e)=> addCarrito(e, data))
+      btn.addEventListener('click', (e)=> agregarAlCarrito(e, data))
     })
 }
 
 function agregarAlCarrito(e, arrayProductos){
-  console.log(producto)
+  //console.log(producto)
   console.log(e.target.dataset.id)
 
   const productoSeleccionado = arrayProductos.find (el => el.id === parseInt(e.target.dataset.id))
