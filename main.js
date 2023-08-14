@@ -1,4 +1,5 @@
 
+
 //así traemos nuestros objetos de json:
 const fetchData = async()=>{
   try {
@@ -51,11 +52,11 @@ const pintarCards = data =>{
 
 function agregarAlCarrito(e, arrayProductos){
   //console.log(producto)
-  console.log(e.target.dataset.id)
+  //console.log(e.target.dataset.id)
 
   const productoSeleccionado = arrayProductos.find (el => el.id === parseInt(e.target.dataset.id))
   console.log(productoSeleccionado)
-  carrito.push(productoSeleccionado)
+  //carrito.push(productoSeleccionado)
 
   const producto =
   {
@@ -64,22 +65,7 @@ function agregarAlCarrito(e, arrayProductos){
     precio: productoSeleccionado.precio,
     cantidad: 1,
   }
-}
 
-
-const addCarrito = (e, data) => {
-  if (e.target.classList.contains('botones'))
-  armarCarrito(e.target.dataset.id, data)
- /* console.log(`Se agrego al carrito! El id del producto seleccionado es ${e.target.id}`);
-  //console.log(e.target.classList.contains('botones'))
-  if (e.target.classList.contains('botones')){
-    armarCarrito(e.target.dataset.id)
-  }*/
-}
-
-const armarCarrito = (id, array) =>{
-  const productoSeleccionado = array.find()
-      
 
   const existe = carrito.some ( p => p.id ===  parseInt(e.target.dataset.id))
   if (existe){
@@ -90,7 +76,12 @@ const armarCarrito = (id, array) =>{
     carrito.push(producto)
   }
   console.log(carrito)
-} 
+}
+
+
+
+
+
 
 
 
