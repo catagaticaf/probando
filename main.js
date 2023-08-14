@@ -45,7 +45,7 @@ const pintarCards = data =>{
 
     
   });
-    const btnAdd = document.querySelectorAll('.botones')
+    const btnAdd = document.querySelectorAll('.btn-compra')
     btnAdd.forEach(btn => {
       btn.addEventListener('click', (e)=> agregarAlCarrito(e, data))
     })
